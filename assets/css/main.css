@@ -1,0 +1,23 @@
+#mm-dropzone {
+    border: dashed 1px;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+#mediaManagerModal {
+    z-index: 1400;
+}
+
+#mediaManagerModal .modal-dialog, #mediaManagerModal .modal-full {
+    max-width: 98% !important;
+}
+
+.tooltip {
+    z-index: 1500 !important;
+}
+
+.swal2-container {
+    z-index: 1600 !important;
+}

@@ -1,0 +1,40 @@
+{
+    "name": "skylineos/yii-mediamanager",
+    "type": "yii2-extension",
+
+    "description": "Yii2 extention using phpleague flysystem",
+    "keywords": [
+        "yii2", 
+        "flysystem", 
+        "media", 
+        "media manager",
+        "kartik",
+        "bootstrap 4"
+    ],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/skylineos/yii-mediamanager/issues",
+        "source": "https://github.com/skylineos/yii-mediamanager"
+    },
+    "authors": [
+        {
+            "name": "Damien Kemens",
+            "email": "dkemens@skylinenet.net"
+        }
+    ],
+    "require": {
+        "php": "~8.0.0",
+        "yiisoft/yii2": "~2.0.0",
+        "league/flysystem": "~2.0.4",
+        "league/flysystem-aws-s3-v3": "^2.0",
+        "2amigos/yii2-tinymce-widget": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "skylineos\\yii\\mediamanager\\": ""
+        }
+    },
+
+    "minimum-stability": "stable",
+    "prefer-stable": true    
+}
