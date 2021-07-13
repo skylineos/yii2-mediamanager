@@ -66,7 +66,7 @@ class FileInput extends InputWidget
         <label for={label-for}>{label}</label>
         <div class="input-group">
             {input}
-            <span class="input-group-btn">{button}{reset-button}</span>
+            <span class="input-group-btn">{button}</span>
         </div>
     </div>';
 
@@ -86,22 +86,6 @@ class FileInput extends InputWidget
     public $buttonOptions = ['class' => 'btn btn-primary'];
 
     /**
-     * @var string reset button tag
-     */
-    public $resetButtonTag = 'button';
-
-    /**
-     * @var string reset button name
-     */
-    public $resetButtonName = '<i class="far fa-times-circle"></i>';
-
-    /**
-     * @var array reset button html options
-     */
-    public $resetButtonOptions = ['class' => 'btn btn-danger'];
-
-
-    /**
      * @inheritdoc
      */
     public function init()
@@ -119,8 +103,6 @@ class FileInput extends InputWidget
         $this->buttonOptions['data-toggle'] = 'modal';
         $this->buttonOptions['href'] = '#mediaManagerModal';
         $this->buttonOptions['type'] = 'button';
-        $this->resetButtonOptions['role'] = 'clear-input';
-        $this->resetButtonOptions['data-clear-element-id'] = $this->options['id'];
     }
     /**
      * Runs the widget.
