@@ -17,7 +17,9 @@ Add the module (per the configuration below) and you should be able to access th
         
         // Layout if you wish to specify
         'layout' => '@vendor/skylineos/yii/mediamanager/views/layouts/main.php',
-
+        
+        // Adapter definitions below - only pick one at a time.
+        
         // For AWS S3
         'adapter' => 's3',
         'configuration' => [
