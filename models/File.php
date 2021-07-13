@@ -15,7 +15,6 @@ class File extends Model
 
     public $lastModified;
 
-    private bool $filtered = false;
 
     private array $data;
 
@@ -47,14 +46,10 @@ class File extends Model
         ];
     }
 
-    public function search(array $params)
+    public function search(array $params): \yii\data\ArrayDataProvider
     {
-        if ($this->load($params) && $this->validate()) {
-            $this->filtered = true;
-        }
-
         return new ArrayDataProvider([
-            'allModels' => $this->getData(),
+            'allModels' => $this->getData($this->load($params) && $this->validate()),
             'pagination' => [
                 'pageSize' => 10,
             ],
@@ -69,9 +64,9 @@ class File extends Model
         ]);
     }
 
-    public function getData()
+    public function getData(bool $filtered): array
     {
-        if ($this->filtered === true) {
+        if ($filtered === true) {
             $this->data = \array_filter($this->data, function ($value) {
                 $conditions = [true];
 

@@ -11,7 +11,7 @@ class Directory
     /**
      * What we use as the root file node
      */
-    public const ROOT_DELIMITER = '/';
+    public const DELIMITER = '/';
 
     private \League\Flysystem\Filesystem $fileSystem;
 
@@ -165,21 +165,23 @@ class Directory
      * @param string $path
      * @return array
      */
-    private function getPathParts(?string $path): array
+    private function getPathParts(string $path): array
     {
-        $parts = explode('/', $path);
+        // Ensure a pesky root / never sneaks in
+        $path = \ltrim($path, '/');
+        $parts = explode(self::DELIMITER, $path);
 
         if (count($parts) === 1) {
             return [
                 'name' => $parts[0],
                 'id' => $parts[0],
-                'parent' => self::ROOT_DELIMITER
+                'parent' => self::DELIMITER
             ];
         }
 
         $directoryName = $parts[(\count($parts) - 1)];
         unset($parts[(\count($parts) - 1)]);
-        $parent = \implode('/', $parts);
+        $parent = \implode(self::DELIMITER, $parts);
 
         return [
             'name' => $directoryName,

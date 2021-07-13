@@ -64,7 +64,7 @@ class DefaultController extends Controller
 
         set_time_limit(0);
         $uploaded = \yii\web\UploadedFile::getInstanceByName('file');
-        $path = strlen(\Yii::$app->request->post('mm-upload-path')) >= 2
+        $path = strlen(\Yii::$app->request->post('mm-upload-path')) > 1
             ? ltrim(\Yii::$app->request->post('mm-upload-path'), '/')
             : '/';
 

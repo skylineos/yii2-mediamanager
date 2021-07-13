@@ -8,26 +8,6 @@ use skylineos\yii\mediamanager\assets\MediaManagerAsset;
 
 class MediaManagerModal extends Widget
 {
-    /**
-     * This should be set here, in params, or in the module config
-     *
-     * @var string $s3bucket The s3 bucket to use.
-     */
-    public $s3bucket;
-
-    /**
-     * This should be set here, in params, or in the module config
-     *
-     * @var string $s3region The region in which the $s3bucket exists, example 'us-east-1'
-     */
-    public $s3region;
-
-    /**
-     * @var string $s3prefix The s3 prefix to use. Can be any base folder
-     */
-    public $s3prefix = null;
-
-
     private \League\Flysystem\Filesystem $fileSystem;
 
     /**

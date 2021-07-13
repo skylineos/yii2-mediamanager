@@ -108,6 +108,10 @@ class FileInput extends InputWidget
     {
         parent::init();
 
+        if (empty($this->options['id'])) {
+            throw new \yii\web\BadRequestHttpException('The input must have an ID');
+        }
+
         if (empty($this->buttonOptions['id'])) {
             $this->buttonOptions['id'] = $this->options['id'] . '-btn';
         }
@@ -129,7 +133,6 @@ class FileInput extends InputWidget
             ? Html::activeTextInput($this->model, $this->attribute, $this->options)
             : Html::textInput($this->name, $this->value, $this->options);
         $replace['{button}'] = Html::tag($this->buttonTag, $this->buttonName, $this->buttonOptions);
-        $replace['{reset-button}'] = null;
 
         return strtr($this->template, $replace);
     }

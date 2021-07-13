@@ -75,7 +75,7 @@ class ApiController extends \yii\rest\ActiveController
         return $directory->listContents();
     }
 
-    public function actionCreateDirectory(): void
+    public function actionCreateDirectory(): array
     {
         $post = \Yii::$app->request->post();
 
@@ -85,6 +85,11 @@ class ApiController extends \yii\rest\ActiveController
 
         $directory = new Directory($this->fileSystem);
         $directory->create($post['parent'] . '/' . $post['name']);
+
+        return [
+            'code' => 200,
+            'message' => "Directory $post[name] created",
+        ];
     }
 
     public function actionDeleteDirectory(): array
@@ -108,11 +113,12 @@ class ApiController extends \yii\rest\ActiveController
         $directory->delete($post['key']);
 
         return [
-            'code' => 200
+            'code' => 200,
+            'message' => "Directory $post[key] deleted.",
         ];
     }
 
-    public function actionDeleteFile(): bool
+    public function actionDeleteFile(): array
     {
         $post = \Yii::$app->request->post();
 
@@ -121,6 +127,12 @@ class ApiController extends \yii\rest\ActiveController
         }
 
         $file = new File($this->fileSystem);
-        return $file->delete($post['path']);
+
+        $file->delete($post['path']);
+
+        return [
+            'code' => 200,
+            'message' => "File $post[path] deleted.",
+        ];
     }
 }
