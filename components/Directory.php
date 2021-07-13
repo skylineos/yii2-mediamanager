@@ -168,7 +168,7 @@ class Directory
     private function getPathParts(string $path): array
     {
         // Ensure a pesky root / never sneaks in
-        $path = \ltrim($path, '/');
+        $path = \ltrim($path, self::DELIMITER);
         $parts = explode(self::DELIMITER, $path);
 
         if (count($parts) === 1) {
