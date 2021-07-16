@@ -125,6 +125,7 @@ $this->registerJs("var path = '/'", \yii\web\View::POS_HEAD);
                         [
                             'attribute' => 'fileSize',
                             'format' => 'shortSize',
+                            'filter' => false,
                         ],
                         [
                             'attribute' => 'lastModified',
