@@ -71,7 +71,7 @@ $this->registerJs("var path = '/'", \yii\web\View::POS_HEAD);
                             ],
                             'buttons' => [
                                 'insert' => function ($url, $model, $key) {
-                                    if (Url::to() !== '/mediamanager/default/index') {
+                                    if (Url::to() !== '/mediamanager/default/index' && Url::to() !== '/mediamanager') {
                                         $path = Url::to('@workingDirectory' . '/' . $model['path'], true);
 
                                         return Html::button(
