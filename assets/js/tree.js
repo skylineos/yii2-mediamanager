@@ -27,10 +27,13 @@ function createJsTree(data)
     }).bind("select_node.jstree", function (e, data) {
         document.cookie = `mmpath=${data.node.id}; path=/`;
         $('#mm-upload-path').val(data.node.id);
-        $.pjax.reload('#folderContents');
+        $.pjax.reload({
+            container: '#folderContents',
+            async: false
+        });
     }).bind('rename_node.jstree', function(e, data) {
-        $.post('/mediamanager/api/create-directory', { 
-            name : data.text, 
+        $.post('/mediamanager/api/create-directory', {
+            name : data.text,
             parent : data.node.parent,
         }, function( res ) {
             $('#folderTree').jstree(true).refresh();
@@ -48,7 +51,7 @@ function createJsTree(data)
             // @todo: only remove the node if ajax does not return an error rather than reloding the whole thing
             if (result.value === true) {
 
-                $.post('/mediamanager/api/delete-directory', { 
+                $.post('/mediamanager/api/delete-directory', {
                     key : data.node.id,
                 }, function(data) {
                     if ( data.code !== 200 ) {
@@ -57,19 +60,19 @@ function createJsTree(data)
                             text: data.message,
                             icon: 'error',
                         });
-        
-                        $('#folderTree').jstree(true).refresh(); 
+
+                        $('#folderTree').jstree(true).refresh();
                     } else {
                         Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',
                             'success'
-                        );                        
+                        );
                     }
-                });   
+                });
             } else {
-                $('#folderTree').jstree(true).refresh();               
+                $('#folderTree').jstree(true).refresh();
             }
-          });        
+          });
     });
 }
